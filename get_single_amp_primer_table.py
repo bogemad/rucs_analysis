@@ -3,11 +3,10 @@
 import sys
 from Bio import SeqIO
 
-infasta = SeqIO.to_dict(SeqIO.parse(sys.argv[1], 'fasta'))
-inprimer_list = [ line.strip() for line in open(sys.argv[2]) ]
-intsv = sys.argv[3]
-outfile = sys.argv[4]
-primer_name_prefix = sys.argv[5]
+inprimer_list = [ line.strip() for line in open(sys.argv[1]) ]
+intsv = sys.argv[2]
+outfile = sys.argv[3]
+primer_name_prefix = sys.argv[4]
 header_line = ''
 
 with open(intsv) as in_handle:
