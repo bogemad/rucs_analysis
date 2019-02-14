@@ -23,7 +23,7 @@ out_primer_sets = []
 for i, primer_set in enumerate(primer_sets):
 	primer_set_name = primer_name_prefix + '_' + str((i+1))
 	if primer_set_name in inprimer_list:
-		out_primer_sets.append(primer_set)
+		out_primer_sets.append([primer_set_name] + primer_set)
 
 with open(outfile,'w') as out_handle:
 	out_handle.write(header_line)
