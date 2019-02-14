@@ -26,6 +26,6 @@ for i, primer_set in enumerate(primer_sets):
 		out_primer_sets.append([primer_set_name] + primer_set)
 
 with open(outfile,'w') as out_handle:
-	out_handle.write(header_line)
+	out_handle.write('#primer_set_name\t' + header_line[1:])
 	for out_primer_set in out_primer_sets:
 		out_handle.write('\t'.join(out_primer_set)+'\n')
