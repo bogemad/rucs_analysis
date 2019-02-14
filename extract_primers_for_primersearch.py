@@ -4,8 +4,7 @@ import sys
 
 infile = sys.argv[1]
 outfile = sys.argv[2]
-
-primer_set_no = 1
+primer_name_prefix = sys.argv[3]
 
 primer_sets = []
 
@@ -18,5 +17,5 @@ with open(infile) as in_handle:
 
 with open(outfile,'w') as out_handle:
 	for i, primer_set in enumerate(primer_sets):
-		out_handle.write('pols_rdes_{0}\t{1}\t{2}\n'.format((i+1), primer_set[0], primer_set[1]))
+		out_handle.write('{3}_{0}\t{1}\t{2}\n'.format((i+1), primer_set[0], primer_set[1], primer_name_prefix))
 
