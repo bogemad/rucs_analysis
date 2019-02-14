@@ -8,6 +8,7 @@ intsv = sys.argv[2]
 outfile = sys.argv[3]
 primer_name_prefix = sys.argv[4]
 header_line = ''
+primer_sets = []
 
 with open(intsv) as in_handle:
 	for line in in_handle:
