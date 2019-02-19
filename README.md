@@ -57,7 +57,7 @@ rucs full \
 
 conda deactivate rucs_env
 ```
-Find additional options with rucs -h. **These can be very useful.**
+Find additional options with `rucs -h`. **These can be very useful.**
 
 RUCS will generate at least 10 000 primer/probe sets which need to be filtered. With the method below primer sets are tested for uniqueness and location. Primer sets that amplify more than one target in any positive genome are excluded. Primer sets which are not entirely located within a CDS and single exon are also excluded. CDS details are provided with a embl annotated genome of your reference which can be generated from maker annotated genomes using [EMBLmyGFF3](https://github.com/NBISweden/EMBLmyGFF3). You will need to include the fasta of the reference genome with  
 
