@@ -13,7 +13,7 @@ A method for developing PCR primers specific to a group of genome seqeunces (pos
 
 ```
 start_dir=$PWD
-conda create -yn rucs_env python=3 primer3-py numpy samtools bwa blast tabulate emboss
+conda create -yn rucs_env python=3 parallel primer3-py numpy samtools bwa blast tabulate emboss
 conda activate rucs_env
 rucs_env_base=$(dirname $(which conda))/../envs/rucs_env/
 mkdir -p $rucs_env_base/opt
