@@ -48,10 +48,14 @@ Run RUCS using positive (what you want to detect) and negative (what you don’t
 ```
 annotated_reference_genome_fasta=<user_input>
 
+conda activate rucs_env
+
 rucs full \
 --reference $annotated_reference_genome_fasta \
 --positives positives/* --negatives negatives/* \
 [--pick_probe]
+
+conda deactivate rucs_env
 ```
 Find additional options with rucs -h. **These can be very useful.**
 
@@ -65,6 +69,7 @@ annotated_reference_genome_embl=<user_input>
 annotated_reference_genome_fasta=<user_input>
 annotated_reference_genome_name=<user_input> # Same as $annotated_reference_genome_fasta without '.fasta' suffix
 
+conda activate rucs_env
 cd $rucs_output_dir
 
 extract_primer_fasta.py \
@@ -98,6 +103,7 @@ results_best.tsv \
 results_best.single_amp_in_all.tsv \
 $primer_name_prefix
 
+conda deactivate rucs_env
 ```
 
 Primer sets that pass all filters are found in `results_best.single_amp_in_all.tsv` with primer binding locations and properties.
