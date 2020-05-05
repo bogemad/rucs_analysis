@@ -82,7 +82,17 @@ for sep_primer_file in sep_primer_files_l:
 
 
 print("Performing virtual PCRs. This will take a while...")
-null = subprocess.run(["parallel", "-j{}".format(threads), 'primersearch', '-infile', '{1}', '-seqall', '{2}', '-mismatchpercent', '10', '-outfile', os.path.join(tmp, '{1/.}.{2/.}.ps_results.txt'), ':::', ' '.join(sep_primer_files_l), ':::', ' '.join(positive_genomes)])
+
+with open(os.path.join(tmp, "primersearch_cmds.txt"), 'w') as pscmds:
+	for genome in positive_genomes:
+		for filepath in sep_primer_files_l:
+			primer_name = os.path.splitext(os.path.basename(filepath))[0]
+			genome_name = os.path.splitext(os.path.basename(genome))[0]
+			outfile = os.path.join(tmp, '{}.{}.ps_results.txt'.format(primer_name, genome_name))
+			pscmds.write("primersearch -infile {1} -seqall {2} -mismatchpercent 10 -outfile {3}\n".format(threads, filepath, genome, outfile))
+
+with open(os.path.join(tmp, "primersearch_cmds.txt")) as pscmds:
+	subprocess.run(["parallel", "-j{}".format(threads)], stdin=pscmds)
 
 
 for positive_genome in sep_results_files_d.keys():
